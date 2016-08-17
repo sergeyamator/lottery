@@ -1,0 +1,22 @@
+extends ../layouts/base.pug
+
+block variables
+  - var title = "Lottery"
+
+block content
+  .container
+    .lottery
+      .lottery_result
+      .lottery_form
+        fieldset.lottery_title Registration form
+          for item in ['name', 'surname', 'email', 'phone']
+            label.lottery_label
+              span=item
+              input.lottery_input(data-field="#{item}")
+
+
+      table.lottery_table
+        th
+          for item in ['name', 'surname', 'email', 'phone']
+            td=item
+  template
