@@ -7,16 +7,39 @@ block content
   .container
     .lottery
       .lottery_result
-      .lottery_form
+        div.lottery_result-title Winners: <span class="result_info"></span>
+        a.lottery_result-btn(href="#") New winner
+
+      form.lottery_form(method="post" action="#" nmae="lottery-form" novalidate)
         fieldset.lottery_title Registration form
-          for item in ['name', 'surname', 'email', 'phone']
-            label.lottery_label
-              span=item
-              input.lottery_input(data-field="#{item}")
+        .lottery_container
+          label.lottery_label
+            span.lottery_field-title Name
+            input.lottery_input(data-field="name" name="name" required)
+
+          label.lottery_label
+            span.lottery_field-title Surname
+            input.lottery_input(data-field="surname" name="surname" required)
+
+          label.lottery_label
+            span.lottery_field-title Email
+            input.lottery_input(data-field="email" required type="email")
+
+          label.lottery_label
+            span.lottery_field-title Phone
+            input.lottery_input(data-field="phone")
+
+          label.lottery_label
+            span.lottery_field-title Birthday
+            input.lottery_input(data-field="data" type="date")
+
+        .lottery_buttons
+          button.lottery_btn(type="reset") Clear
+          button.lottery_btn(type="submit") Add
 
 
       table.lottery_table
-        th
+        tr
           for item in ['name', 'surname', 'email', 'phone']
-            td=item
+            th=item
   template

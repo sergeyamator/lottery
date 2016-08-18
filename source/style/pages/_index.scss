@@ -1,0 +1,121 @@
+body {
+  padding-top: 50px;
+}
+
+.errorMessage {
+  float: right;
+  width: 70%;
+  margin-right: 50px;
+  margin-top: 10px;
+  text-align: right;
+  color: #ff0000;
+
+  &:before {
+    content: '* ';
+  }
+}
+
+.container {
+  max-width: 960px;
+  margin: auto;
+}
+
+.lottery {
+/* -------------- Top ------------- */
+  &_result {
+    @extend %clearfix;
+    margin-bottom: 30px;
+    padding: 10px 20px;
+    border: 1px solid;
+
+    &-title {
+      float: left;
+      padding-top: 10px;
+    }
+
+    &_info {
+      float: left;
+      margin-left: 20px;
+      padding-top: 10px;
+    }
+
+    &-btn {
+      float: right;
+      padding: 10px;
+      border: 1px solid;
+      background: #ffebcd;
+      color: #595651;
+      text-decoration: none;
+      transition: 0.3s;
+
+      &:hover {
+        background: darken(#ffebcd, 15%);
+      }
+    }
+  }
+
+  /* -------------- Form ------------- */
+  &_form {
+    padding: 30px;
+    margin-bottom: 50px;
+    border: 1px solid;
+  }
+
+  &_title {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  &_container {
+    padding: 20px 50px;
+    margin: auto;
+  }
+
+  &_label {
+    @extend %clearfix;
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  &_field-title {
+    display: inline-block;
+    text-align: right;
+    width: 20%;
+  }
+
+  &_input {
+    margin-left: 30px;
+    padding: 5px;
+    height: 25px;
+    width: 70%;
+  }
+
+  &_buttons {
+    text-align: center;
+  }
+
+  &_btn {
+    display: inline-block;
+    background: #fff1c2;
+    padding: 10px;
+    border: none;
+    transition: 0.3s;
+
+    &:first-child {
+      margin-right: 25px;
+    }
+
+    &:hover {
+      background: darken(#fff1c2, 10%);
+    }
+  }
+
+  /* -------------- Table ------------- */
+  &_table {
+
+  }
+  th {
+    padding: 10px;
+    border: 1px solid;
+  }
+}

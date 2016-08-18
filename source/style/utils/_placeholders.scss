@@ -10,7 +10,7 @@
  *    http://nicolasgallagher.com/micro-clearfix-hack/
  */
 
-%clearfix :after {
+%clearfix:after {
   content: ' '; // 1
   display: table; // 2
   clear: both;
