@@ -11,8 +11,11 @@ class Form {
     this.form = form;
     this.fields = this.form.querySelectorAll('input');
     this.storage = localStorage;
-    this.form.addEventListener('submit', this.save.bind(this));
     this.data = winners.getData() || [];
+    this.clearBtn = this.form.querySelector('.lottery_btn--clear');
+
+    this.form.addEventListener('submit', this.save.bind(this));
+    this.clearBtn.addEventListener('click', this.clearAllErrors.bind(this));
   }
 
   /**
@@ -35,10 +38,9 @@ class Form {
 
       this.data.push(obj);
       this.storage.setItem('winners', JSON.stringify(this.data));
+      winners.render();
+      this.form.reset();
     }
-
-    winners.render();
-    this.form.reset();
   }
 
   /**
@@ -85,6 +87,16 @@ class Form {
   removeMessage(el) {
     let parent = el.closest('.lottery_label');
     parent.removeChild(el);
+  }
+
+  clearAllErrors() {
+    let errors = this.form.querySelectorAll('.errorMessage');
+
+    [].forEach.call(errors, (el) => {
+      let parent = el.closest('.lottery_label');
+
+      parent.removeChild(el);
+    })
   }
 }
 
