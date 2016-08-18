@@ -10,3 +10,4 @@ Below you can find some instructions.
 * npm install gulpjs/gulp-cli#4.0 -g
 * npm install
 * run "gulp" command to start
+* open localhost:3000
