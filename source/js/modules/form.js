@@ -1,11 +1,18 @@
 'use strict';
 
+let Winners = require('./winners');
+
+let winners = new Winners(document.querySelector('.lottery_table'));
+
+winners.render();
+
 class Form {
   constructor(form) {
     this.form = form;
     this.fields = this.form.querySelectorAll('input');
-
+    this.storage = localStorage;
     this.form.addEventListener('submit', this.save.bind(this));
+    this.data = winners.getData() || [];
   }
 
   /**
@@ -15,19 +22,23 @@ class Form {
    */
   save(e) {
     e.preventDefault();
-
     if (this.isValid()) {
-      this.storage = localStorage;
-      this.data = {};
+      let obj = {};
 
       [].forEach.call(this.fields, (el) => {
         if (el.value.trim()) {
-          this.data[el.dataset.field] = el.value;
+          obj[el.dataset.field] = el.value;
+        } else {
+          obj[el.dataset.field] = 'unknown';
         }
       });
 
-      this.storage.setItem('form', JSON.stringify(this.data));
+      this.data.push(obj);
+      this.storage.setItem('winners', JSON.stringify(this.data));
     }
+
+    winners.render();
+    this.form.reset();
   }
 
   /**
@@ -67,6 +78,10 @@ class Form {
     parent.appendChild(message);
   }
 
+  /**
+   * Delete error message
+   * @param {HTMLElement} el
+   */
   removeMessage(el) {
     let parent = el.closest('.lottery_label');
     parent.removeChild(el);

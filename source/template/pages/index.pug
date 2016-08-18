@@ -10,7 +10,7 @@ block content
         div.lottery_result-title Winners: <span class="result_info"></span>
         a.lottery_result-btn(href="#") New winner
 
-      form.lottery_form(method="post" action="#" nmae="lottery-form" novalidate)
+      form.lottery_form(method="post" action="#" name="lottery-form" novalidate)
         fieldset.lottery_title Registration form
         .lottery_container
           label.lottery_label
@@ -27,11 +27,11 @@ block content
 
           label.lottery_label
             span.lottery_field-title Phone
-            input.lottery_input(data-field="phone")
+            input.lottery_input(data-field="phone" type="number" min="0")
 
           label.lottery_label
             span.lottery_field-title Birthday
-            input.lottery_input(data-field="data" type="date")
+            input.lottery_input(data-field="birthday" type="date")
 
         .lottery_buttons
           button.lottery_btn(type="reset") Clear
@@ -39,7 +39,15 @@ block content
 
 
       table.lottery_table
-        tr
-          for item in ['name', 'surname', 'email', 'phone']
-            th=item
-  template
+        thead
+          tr
+            for item in ['name', 'surname', 'email', 'phone', 'birthday']
+              th=item
+        tbody
+
+      .clear-button
+        button.clear-all(type="button") Clear all data
+  template.winner-template
+    tr
+      for item in ['birthday', 'name', 'surname', 'email', 'phone']
+        td(data-name=item)
