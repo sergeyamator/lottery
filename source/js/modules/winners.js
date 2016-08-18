@@ -64,7 +64,8 @@ class Winners {
   /**
    * Choose random winner from table
    */
-  selectRandomWinner() {
+  selectRandomWinner(e) {
+    e.preventDefault();
     if (this.data) {
       let max = this.data.length - 1,
         min = 0,
@@ -80,8 +81,7 @@ class Winners {
   /**
    * show winner on the page
    */
-  showWinner(e) {
-    e.preventDefault();
+  showWinner() {
     this.winnerContainer = document.querySelector('.result_info');
     let winnerInfo = '';
 
