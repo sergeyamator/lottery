@@ -80,7 +80,8 @@ class Winners {
   /**
    * show winner on the page
    */
-  showWinner() {
+  showWinner(e) {
+    e.preventDefault();
     this.winnerContainer = document.querySelector('.result_info');
     let winnerInfo = '';
 
